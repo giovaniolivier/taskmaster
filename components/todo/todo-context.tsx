@@ -28,7 +28,6 @@ type TodoContextType = {
 
 const TodoContext = createContext<TodoContextType | undefined>(undefined)
 
-// Function to serialize todos before saving
 const serializeTodos = (todos: Todo[]): string => {
   return JSON.stringify(todos, (key, value) => {
     if (key === 'deadline' && value) {
@@ -38,7 +37,6 @@ const serializeTodos = (todos: Todo[]): string => {
   })
 }
 
-// Function to deserialize todos after loading
 const deserializeTodos = (todosString: string): Todo[] => {
   return JSON.parse(todosString, (key, value) => {
     if (key === 'deadline' && value) {
@@ -63,7 +61,6 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     return []
   })
 
-  // Save todos to localStorage
   useEffect(() => {
     if (todos.length > 0 || localStorage.getItem('todos')) {
       try {
@@ -78,7 +75,6 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     }
   }, [todos])
 
-  // Effect to automatically check tasks with passed deadlines
   useEffect(() => {
     const checkExpiredTasks = () => {
       const now = new Date()
