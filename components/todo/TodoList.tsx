@@ -219,6 +219,7 @@ export function TodoList({ viewMode, selectedFilter, searchQuery, sortBy }: Todo
                     mode="single"
                     selected={editingTodo.deadline}
                     onSelect={(date) => setEditingTodo({ ...editingTodo, deadline: date })}
+                    fromDate={new Date()}
                     initialFocus
                   />
                 </PopoverContent>

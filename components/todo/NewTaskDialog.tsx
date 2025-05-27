@@ -107,6 +107,7 @@ export function NewTaskDialog({ open, onOpenChange }: NewTaskDialogProps) {
                 mode="single"
                 selected={deadline}
                 onSelect={setDeadline}
+                fromDate={new Date()}
                 initialFocus
               />
             </PopoverContent>
